@@ -1,0 +1,49 @@
+<div class="table-container">
+    <div class="role-oganization-unit-actions" *ngIf="organizationUnitId">
+        <button mat-raised-button color="accent" (click)="associateRoles()">
+          {{'roleOrganizationUnit.associate' | translate}}
+        </button>
+    </div>
+    <div class="table-loading" *ngIf="dataSource.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="table-responsive-vertical" addapptablesPerfectScrollbar>
+        <mat-table [dataSource]="dataSource" class="table">
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+              {{'general.actions' | translate}}
+            </mat-header-cell>
+            <mat-cell class="text-light-gray" *matCellDef="let roleOrganizationUnit">
+              <button *ngIf="'Pages.Administration.OrganizationUnits.ManageMembers' | isGranted" mat-icon-button (click)="removeRole(roleOrganizationUnit)">
+                <mat-icon suffix>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+            <!-- roleName Column -->
+            <ng-container matColumnDef="roleName">
+                <mat-header-cell *matHeaderCellDef>{{'role.name' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let roleOrganizationUnit" title="{{'role.name' | translate}}"> {{roleOrganizationUnit.normalizedName}} </mat-cell>
+            </ng-container>
+            <!-- roleName Column -->
+
+            <!-- addedTime Column -->
+            <ng-container matColumnDef="addedTime">
+                <mat-header-cell *matHeaderCellDef>{{'roleOrganizationUnit.addedTime' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let roleOrganizationUnit" title="{{'roleOrganizationUnit.addedTime' | translate}}">
+                  {{roleOrganizationUnit.addedTime | momentFormat:'DD MMMM YYYY'}}
+                </mat-cell>
+            </ng-container>
+            <!-- addedTime Column -->
+
+            <mat-header-row *matHeaderRowDef="dataSource.displayedColumns | isGrantedActionColumn: ['Pages.Administration.OrganizationUnits.ManageMembers']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: dataSource.displayedColumns | isGrantedActionColumn: ['Pages.Administration.OrganizationUnits.ManageMembers'];"></mat-row>
+        </mat-table>
+        <mat-paginator [length]="dataSource.total$ | async" [pageSize]="size" hidePageSize="true"></mat-paginator>
+    </div>
+    <div class="emtpy-message" *ngIf="!organizationUnitId">
+      <span>{{'roleOrganizationUnit.selectOrganizationToViewRoles' | translate}}</span>
+    </div>
+</div>

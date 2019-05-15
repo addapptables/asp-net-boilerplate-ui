@@ -1,0 +1,9 @@
+<div class="file-field input-field">
+  <div class="btn">
+    <button mat-raised-button>{{'general.file' | translate}}</button>
+    <input type="file" (change)="changeFile($event)" accept="image/*">
+  </div>
+  <div class="file-path-wrapper">
+    <input type="text" class="file-input simple-upload-file-text" [(ngModel)]="name">
+  </div>
+</div>

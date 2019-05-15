@@ -1,0 +1,160 @@
+{
+    "general": {
+        "save": "Guardar",
+        "close": "Cerrar",
+        "required": "El campo es requerido",
+        "maxlength": "El campo no puede tener más de {{x}} caracteres",
+        "ok": "Ok",
+        "actions": "Acciones",
+        "next": "Siguiente",
+        "back": "Atrás",
+        "saveSuccessFully": "Se ha guardado de forma exitosa",
+        "deletesuccessfully": "Eliminado de forma correcta",
+        "delete": "Eliminar",
+        "cancel": "Cancelar",
+        "yes": "Si",
+        "no": "No",
+        "searcher": "Buscador",
+        "search": "Buscar",
+        "clear": "Limpiar",
+        "isEmail": "El formato no es correcto",
+        "file": "Avatar",
+        "monthly": "Mensual",
+        "biannual": "Semestral",
+        "annual": "Anual",
+        "select": "Seleccione",
+        "emptyData": "No se encontraron resultados",
+        "edit": "Editar"
+    },
+    "user": {
+        "title": "Usuarios",
+        "userName": "Nombre de usuario",
+        "fullName": "Nombres",
+        "emailAddress": "Correo electrónico",
+        "roleNames": "Roles",
+        "isActive": "Activo",
+        "lastLoginTime": "Último incio de sesión",
+        "create": "Crear usuario",
+        "name": "Nombre",
+        "surname": "Apellidos",
+        "password": "Contraseña",
+        "repeatPassword": "Repetir contraseña",
+        "areYouSure": "¿Está seguro de eliminar el usuario {{title}}?",
+        "currentPassword": "Contraseña actual",
+        "newPassword": "Nueva contraseña",
+        "passwordDotNotMatch": "Las contraseñas no coinciden",
+        "backToMyAccount": "Regresar a mi cuenta"
+    },
+    "translate": {
+        "english": "Inglés",
+        "spanish": "Español"
+    },
+    "auth": {
+        "login": "Iniciar sesión",
+        "email": "Correo",
+        "password": "Contraseña",
+        "register": "Haz parte de Addapptables",
+        "names": "Nombres",
+        "surnames": "Apellidos",
+        "birthday": "Fecha de nacimiento",
+        "name": "Nombres",
+        "repeatPassword": "Repetir contraseña",
+        "remember": "Recordar",
+        "forgotPassword": "¿Olvidaste tu contraseña?",
+        "userNameOrEmail": "Nombre de usuario o correo electrónico",
+        "recoverPassword": "Recuperar contraseña",
+        "sendEmailRecoverPassword": "Se ha enviado un correo electrónico para recuperar la contraseña",
+        "resetPassword": "Cambiar contraseña",
+        "resetedPasswordSuccessfully": "Se ha cambiado la contraseña de forma correcta"
+    },
+    "tenant": {
+        "title": "Empresas",
+        "change": "Cambiar de empresa",
+        "name": "Nombre de la empresa",
+        "tenantIsNotActive": "La empresa con nombre {{x}} no está activa",
+        "thereIsNoTenantDefinedWithName": "No existe la empresa con nombre {{x}}",
+        "leaveEmptyToSwitchToHost": "Dejar vacío para cambiar al servidor",
+        "tenancyName": "Subdominio",
+        "isActive": "Activo",
+        "edition": "Edición",
+        "subscriptionEndDate": "Fecha de caducidad",
+        "isInTrialPeriod": "Periodo de prueba",
+        "isSubscriptionExpired": "Subscripción vencida",
+        "nextPrice": "Precio próximo pago",
+        "create": "Crear empresa",
+        "adminEmailAddress": "Correo del administrador",
+        "connectionString": "Cadena de conexión",
+        "tenancyNamePattern": "El nombre del dominio debe comenzar con una letra y continuar con una letra, número o guión",
+        "areYouSure": "¿Está seguro de eliminar la empresa {{title}}?",
+        "impersonation": "Inicio de sesión con esta empresa"
+    },
+    "administration": {
+        "title": "Administración"
+    },
+    "role": {
+        "title": "Roles",
+        "create": "Crear rol",
+        "name": "Nombre",
+        "description": "Descripción",
+        "fillGeneralInformation": "Información general",
+        "fillPermissions": "Permisos",
+        "areYouSure": "¿Está seguro de eliminar el rol {{title}}?"
+    },
+    "edition": {
+        "title": "Ediciones",
+        "name": "Nombre",
+        "isFree": "Edición gratis",
+        "price": "Precio",
+        "editionType": "Tipo de pago",
+        "trialDayCount": "Días de prueba",
+        "numberOfUsers": "Número de usuarios",
+        "areYouSure": "¿Está seguro de eliminar la edición {{title}}?",
+        "create": "Crear edición"
+    },
+    "profile": {
+        "closeSession": "Cerrar sesión",
+        "basicInfo": "Información básica",
+        "updateInfo": "Actualizar información",
+        "changePassword": "Cambiar contraseña",
+        "viewProfile": "Ver perfil"
+    },
+    "organizationUnit": {
+        "title": "Unidades organizacionales",
+        "create": "Crear unidad organizacional",
+        "addSubUnit": "Agregar sub unidad",
+        "displayName": "Nombre",
+        "areYouSure": "¿Está seguro de eliminar la unidad organizacional {{title}}?",
+        "associations": "Asociaciones"
+    },
+    "userOrganizationUnit": {
+        "addedTime": "Fecha de creación",
+        "selectOrganizationToViewUsers": "Seleccione una unidad organizacional para ver los usuarios",
+        "associate": "Asociar usuarios",
+        "areYouSure": "¿Está seguro de eliminar el usuario {{title}} de la unidad organizacional?"
+    },
+    "roleOrganizationUnit": {
+        "addedTime": "Fecha de creación",
+        "selectOrganizationToViewRoles": "Seleccione una unidad organizacional para ver los roles",
+        "associate": "Asociar roles",
+        "areYouSure": "¿Está seguro de eliminar el rol {{title}} de la unidad organizacional?"
+    },
+    "contact": {
+        "title": "Contactos",
+        "create": "Crear contacto",
+        "names": "Nombres",
+        "identificationType": "Tipo de identificación",
+        "address": "Dirección",
+        "email": "Correo",
+        "phone": "Teléfono",
+        "cellPhone": "Celular",
+        "isClient": "Cliente",
+        "isSupplier": "Proveedor",
+        "identification": "Identificación",
+        "areYouSure": "¿Está seguro de eliminar el contacto {{title}}?"
+    },
+    "accountancy": {
+        "identificationType": {
+            "title": "Tipo de identificación"
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "user": {
+        "title": "Users"
+    },
+    "translate": {
+        "english": "English",
+        "spanish": "Spanish"
+    },
+    "auth": {
+        "login": "Log in",
+        "email": "Email",
+        "password": "password",
+        "register": "Become part of Addapptables",
+        "names": "Names",
+        "surnames": "Last name",
+        "birthday": "Date of birth"
+    }
+}

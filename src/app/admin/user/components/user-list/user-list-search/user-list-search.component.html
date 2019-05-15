@@ -1,0 +1,14 @@
+<form [formGroup]="form" class="form-horizontal" (ngSubmit)="submit()" autocomplete="off">
+  <mat-form-field>
+    <input formControlName="keyword" matInput [placeholder]="'general.searcher' | translate">
+  </mat-form-field>
+  <app-role-select customClass="form-horizontal" formControlName="roleId"></app-role-select>
+  <div class="buttons">
+    <button type="submit" mat-icon-button [matTooltip]="'general.search' | translate">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button type="button" mat-icon-button [matTooltip]="'general.clear' | translate" (click)="clear()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</form>

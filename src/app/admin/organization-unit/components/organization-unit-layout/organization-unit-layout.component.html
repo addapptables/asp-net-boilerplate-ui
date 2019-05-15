@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-12 col-xl-6">
+    <addapptable-card>
+      <addapptable-card-header>
+        <addapptable-card-header-oval>
+          <addapptable-card-title>
+            <i class="fas fa-sitemap"></i>
+            <h4>{{'organizationUnit.title' | translate}}</h4>
+          </addapptable-card-title>
+        </addapptable-card-header-oval>
+        <addapptable-card-header-subtitle *ngIf="'Pages.Administration.OrganizationUnits.Create' | isGranted">
+          <button color="accent" mat-raised-button (click)="createOrganizationUnit()">
+            <mat-icon suffix>add</mat-icon>
+            {{'organizationUnit.create' | translate}}
+          </button>
+        </addapptable-card-header-subtitle>
+      </addapptable-card-header>
+      <addapptable-card-body>
+          <app-organization-unit-tree (selectOganizationId)="organizationUnitId = $event"></app-organization-unit-tree>
+      </addapptable-card-body>
+    </addapptable-card>
+  </div>
+  <div class="col-12 col-xl-6">
+    <app-organization-unit-association-layout [organizationUnitId]="organizationUnitId"></app-organization-unit-association-layout>
+  </div>
+</div>

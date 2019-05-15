@@ -1,0 +1,18 @@
+<addapptable-modal>
+  <addapptable-modal-header>
+    <h3 class="text-accent">{{'roleOrganizationUnit.associate' | translate}}</h3>
+    <button mat-icon-button (click)="close()">
+      <mat-icon suffix>close</mat-icon>
+    </button>
+  </addapptable-modal-header>
+  <addapptable-modal-body>
+    <app-role-organization-unit-form #organizationUnitForm [organizationUnitId]="organizationUnitId" (save)="close()"></app-role-organization-unit-form>
+  </addapptable-modal-body>
+  <addapptable-modal-footer>
+    <button type="submit" form="associate-role-organizationUnit-form" mat-raised-button color="accent"
+    [disabled]="(organizationUnitForm.loadingAction$ | async) || organizationUnitForm.rolesSelected.length === 0">
+      {{'general.save' | translate}}
+    </button>
+    <button type="button" mat-raised-button (click)="close()">{{'general.close' | translate}}</button>
+  </addapptable-modal-footer>
+</addapptable-modal>

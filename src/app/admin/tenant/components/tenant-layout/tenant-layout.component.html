@@ -1,0 +1,19 @@
+<addapptable-card>
+  <addapptable-card-header>
+    <addapptable-card-header-oval>
+      <addapptable-card-title>
+        <mat-icon suffix>business</mat-icon>
+        <h4>{{'tenant.title' | translate}}</h4>
+      </addapptable-card-title>
+    </addapptable-card-header-oval>
+    <addapptable-card-header-subtitle *ngIf="'Pages.Tenants.Create' | isGranted">
+      <button color="accent" mat-raised-button (click)="createTenant()">
+        <mat-icon suffix>add</mat-icon>
+        {{'tenant.create' | translate}}
+      </button>
+    </addapptable-card-header-subtitle>
+  </addapptable-card-header>
+  <addapptable-card-body>
+    <app-tenant-list></app-tenant-list>
+  </addapptable-card-body>
+</addapptable-card>

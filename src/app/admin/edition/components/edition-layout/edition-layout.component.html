@@ -1,0 +1,19 @@
+<addapptable-card>
+  <addapptable-card-header>
+    <addapptable-card-header-oval>
+      <addapptable-card-title>
+        <mat-icon suffix>library_books</mat-icon>
+        <h4>{{'edition.title' | translate}}</h4>
+      </addapptable-card-title>
+    </addapptable-card-header-oval>
+    <addapptable-card-header-subtitle *ngIf="'Pages.Editions.Create' | isGranted">
+      <button type="button" color="accent" mat-raised-button (click)="createEdition()">
+        <mat-icon suffix>add</mat-icon>
+        {{'edition.create' | translate}}
+      </button>
+    </addapptable-card-header-subtitle>
+  </addapptable-card-header>
+  <addapptable-card-body>
+    <app-edition-list></app-edition-list>
+  </addapptable-card-body>
+</addapptable-card>

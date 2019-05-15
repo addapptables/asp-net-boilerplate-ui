@@ -1,0 +1,87 @@
+<div class="table-container">
+    <div class="table-loading" *ngIf="dataSource.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+    <app-contact-list-search (search)="search($event)"></app-contact-list-search>
+    <div class="table-responsive-vertical" addapptablesPerfectScrollbar>
+        <mat-table [dataSource]="dataSource" class="table">
+
+            <!-- Actions Column -->
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef>
+                {{'general.actions' | translate}}
+              </mat-header-cell>
+              <mat-cell class="text-light-gray" *matCellDef="let Contact">
+                <button mat-icon-button (click)="editContact(Contact)" *ngIf="'Pages.Public.Contacts.Edit' | isGranted">
+                  <mat-icon suffix>edit</mat-icon>
+                </button>
+                <button *ngIf="'Pages.Public.Contacts.Delete' | isGranted" mat-icon-button (click)="deleteContact(Contact)">
+                  <mat-icon suffix>delete</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+
+            <!-- identificationType Column -->
+            <ng-container matColumnDef="identificationType">
+                <mat-header-cell *matHeaderCellDef>{{'contact.identificationType' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let contact" title="{{'contact.identificationType' | translate}}">
+                  <span [ngSwitch]="contact.identificationType">
+                    <span *ngSwitchCase="1">
+                      NIT
+                    </span>
+                    <span *ngSwitchCase="2">
+                      CC
+                    </span>
+                  </span>
+                </mat-cell>
+            </ng-container>
+            <!-- identificationType Column -->
+
+            <!-- identification Column -->
+            <ng-container matColumnDef="identification">
+                <mat-header-cell *matHeaderCellDef>{{'contact.identification' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let contact" title="{{'contact.identification' | translate}}"> {{contact.identification}} </mat-cell>
+            </ng-container>
+            <!-- identification Column -->
+
+            <!-- names Column -->
+            <ng-container matColumnDef="names">
+                <mat-header-cell *matHeaderCellDef>{{'contact.names' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let contact" title="{{'contact.names' | translate}}"> {{contact.names}} </mat-cell>
+            </ng-container>
+            <!-- names Column -->
+
+            <!-- email Column -->
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef>{{'contact.email' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let contact" title="{{'contact.email' | translate}}"> {{contact.email}} </mat-cell>
+            </ng-container>
+            <!-- email Column -->
+
+            <!-- address Column -->
+            <ng-container matColumnDef="address">
+                <mat-header-cell *matHeaderCellDef>{{'contact.address' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let contact" title="{{'contact.address' | translate}}"> {{contact.address}} </mat-cell>
+            </ng-container>
+            <!-- address Column -->
+
+            <!-- phone Column -->
+            <ng-container matColumnDef="phone">
+                <mat-header-cell *matHeaderCellDef>{{'contact.phone' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let contact" title="{{'contact.phone' | translate}}"> {{contact.phone}} </mat-cell>
+            </ng-container>
+            <!-- phone Column -->
+
+            <!-- cellPhone Column -->
+            <ng-container matColumnDef="cellPhone">
+                <mat-header-cell *matHeaderCellDef>{{'contact.cellPhone' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let contact" title="{{'contact.cellPhone' | translate}}"> {{contact.cellPhone}} </mat-cell>
+            </ng-container>
+            <!-- cellPhone Column -->
+
+            <mat-header-row *matHeaderRowDef="displayedColumns | isGrantedActionColumn: ['Pages.Public.Contacts.Edit', 'Pages.Public.Contacts.Delete']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns | isGrantedActionColumn: ['Pages.Public.Contacts.Edit', 'Pages.Public.Contacts.Delete'];"></mat-row>
+        </mat-table>
+        <mat-paginator [length]="dataSource.total$ | async" [pageSize]="size" hidePageSize="true"></mat-paginator>
+    </div>
+</div>

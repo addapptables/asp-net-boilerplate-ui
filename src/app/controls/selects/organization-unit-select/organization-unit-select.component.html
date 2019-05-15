@@ -1,0 +1,6 @@
+<mat-form-field>
+  <mat-select [placeholder]="'organizationUnit.title' | translate" [multiple]="multiple" [disabled]="disabled" [value]="value$ | async" [required]="required"
+  (selectionChange)="onChange($event)" (openedChange)="openedChange($event)">
+    <mat-option *ngFor="let organizationUnit of organizationUnits$ | async" [value]="organizationUnit.id">{{organizationUnit.displayName}}</mat-option>
+  </mat-select>
+</mat-form-field>

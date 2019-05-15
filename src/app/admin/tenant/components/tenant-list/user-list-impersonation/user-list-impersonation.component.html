@@ -1,0 +1,21 @@
+
+<addapptable-modal>
+  <addapptable-modal-header>
+    <h3 class="text-accent">{{'tenant.impersonation' | translate}}</h3>
+    <button mat-icon-button (click)="close()">
+      <mat-icon suffix>close</mat-icon>
+    </button>
+  </addapptable-modal-header>
+  <addapptable-modal-body>
+    <app-user-list [displayedColumns]="['extendColumn', 'fullName', 'emailAddress']" [tenantId]="tenantId" [size]="5">
+      <ng-template let-user="user">
+        <button type="button" mat-icon-button (click)="impersonation(user)" [disabled]="saving$ | async">
+          <mat-icon suffix>verified_user</mat-icon>
+        </button>
+      </ng-template>
+    </app-user-list>
+  </addapptable-modal-body>
+  <addapptable-modal-footer>
+    <button type="button" mat-raised-button (click)="close()">{{'general.close' | translate}}</button>
+  </addapptable-modal-footer>
+</addapptable-modal>

@@ -1,0 +1,43 @@
+<div class="table-container">
+    <div class="table-loading" *ngIf="dataSource.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="table-responsive-vertical" addapptablesPerfectScrollbar>
+        <mat-table [dataSource]="dataSource" class="table">
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell class="text-light-gray" *matCellDef="let userOrganizationUnit">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle({ id: userOrganizationUnit.id, pageIndex: paginator.pageIndex}) : null"
+                            [checked]="selection.isSelected({ id: userOrganizationUnit.id, pageIndex: paginator.pageIndex})">
+              </mat-checkbox>
+            </mat-cell>
+          </ng-container>
+
+            <!-- fullName Column -->
+            <ng-container matColumnDef="fullName">
+                <mat-header-cell *matHeaderCellDef>{{'user.fullName' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let userOrganizationUnit" title="{{'user.fullName' | translate}}"> {{userOrganizationUnit.fullName}} </mat-cell>
+            </ng-container>
+            <!-- fullName Column -->
+
+            <!-- emailAddress Column -->
+            <ng-container matColumnDef="emailAddress">
+                <mat-header-cell *matHeaderCellDef>{{'user.emailAddress' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let userOrganizationUnit" title="{{'user.emailAddress' | translate}}"> {{userOrganizationUnit.emailAddress}} </mat-cell>
+            </ng-container>
+            <!-- emailAddress Column -->
+
+            <mat-header-row *matHeaderRowDef="dataSource.displayedColumns | isGrantedActionColumn: ['Pages.Administration.OrganizationUnits.ManageMembers']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: dataSource.displayedColumns | isGrantedActionColumn: ['Pages.Administration.OrganizationUnits.ManageMembers'];"></mat-row>
+        </mat-table>
+        <mat-paginator [length]="dataSource.total$ | async" [pageSize]="5" hidePageSize="true"></mat-paginator>
+    </div>
+</div>

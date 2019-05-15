@@ -1,0 +1,55 @@
+<form autocomplete="off" id="edition-form" [formGroup]="formGroup" class="form-full-width" (submit)="submit()">
+  <div class="row">
+    <!-- name Field -->
+    <div class="col-12 col-md-6">
+      <mat-form-field>
+        <input matInput [placeholder]="'edition.name' | translate" formControlName="name" required>
+        <mat-error *ngIf="formGroup.controls.name.invalid">
+          <span *ngIf="formGroup.controls.name.errors.required">{{'general.required' | translate}}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-6 edition-isfree">
+      <mat-checkbox #isFree [checked]="isFree$ | async" (change)="changeIsFree($event)">{{'edition.isFree' | translate}}</mat-checkbox>
+    </div>
+
+    <div formGroupName="groupEdition" class="col-12" *ngIf="!(isFree$ | async)">
+      <div class="row">
+          <!-- price Field -->
+          <div class="col-12 col-md-6">
+            <mat-form-field class="form-full-width">
+              <input type="number" matInput [placeholder]="'edition.price' | translate" formControlName="price" required>
+              <mat-error *ngIf="formGroup.controls.groupEdition.controls.price.invalid">
+                <span *ngIf="formGroup.controls.groupEdition.controls.price.errors.required">{{'general.required' | translate}}</span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- editionType Field -->
+          <div class="col-12 col-md-6">
+            <mat-form-field class="form-full-width">
+              <app-edition-type-pay-select [placeholder]="'edition.editionType' | translate" formControlName="editionType" required></app-edition-type-pay-select>
+              <mat-error *ngIf="formGroup.controls.groupEdition.controls.editionType.invalid">
+                <span *ngIf="formGroup.controls.groupEdition.controls.editionType.errors.required">{{'general.required' | translate}}</span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- trialDayCount Field -->
+          <div class="col-12 col-md-6">
+            <mat-form-field class="form-full-width">
+              <input type="number" matInput [placeholder]="'edition.trialDayCount' | translate" formControlName="trialDayCount">
+            </mat-form-field>
+          </div>
+
+          <!-- numberOfUsers Field -->
+          <div class="col-12 col-md-6">
+            <mat-form-field class="form-full-width">
+              <input type="number" matInput [placeholder]="'edition.numberOfUsers' | translate" formControlName="numberOfUsers">
+            </mat-form-field>
+          </div>
+      </div>
+    </div>
+  </div>
+</form>

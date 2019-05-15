@@ -1,0 +1,43 @@
+<addapptable-card>
+  <addapptable-card-header>
+    <addapptable-card-header-oval>
+      <addapptable-card-title>
+        <h4>{{'profile.basicInfo' | translate}}</h4>
+      </addapptable-card-title>
+    </addapptable-card-header-oval>
+  </addapptable-card-header>
+  <addapptable-card-body>
+    <div class="profile">
+      <div class="profile-pic" *ngIf="result$ | async as profile">
+        <img *ngIf="profile.profilePictureBase64" [src]="profile.profilePictureBase64">
+        <img *ngIf="!profile.profilePictureBase64" src="assets/images/profile/default-profile-picture.png">
+      </div>
+      <div class="details" *ngIf="result$ | async as profile">
+        <div class="profile-details-field">
+          <h4>
+            {{'user.userName' | translate}}:
+          </h4>
+          <span>
+            {{profile.name}}
+          </span>
+        </div>
+        <div class="profile-details-field">
+          <h4>
+            {{'user.fullName' | translate}}:
+          </h4>
+          <span>
+            {{profile.fullName}}
+          </span>
+        </div>
+        <div class="profile-details-field">
+          <h4>
+            {{'user.emailAddress' | translate}}:
+          </h4>
+          <span>
+            {{ profile.emailAddress }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </addapptable-card-body>
+</addapptable-card>

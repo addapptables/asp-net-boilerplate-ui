@@ -1,0 +1,6 @@
+<mat-form-field [class]="customClass">
+  <mat-select [placeholder]="'role.title' | translate" [multiple]="multiple" [disabled]="disabled" [value]="value$ | async" [required]="required"
+  (selectionChange)="onChange($event)" (openedChange)="openedChange($event)">
+    <mat-option *ngFor="let role of roles$ | async" [value]="role.displayName">{{role.normalizedName}}</mat-option>
+  </mat-select>
+</mat-form-field>

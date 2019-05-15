@@ -1,0 +1,4 @@
+<form [formGroup]="formGroup" id="associate-organizationUnit-form" (submit)="submit()" autocomplete="off">
+    <app-associate-user-organization-unit-list [setOrganizationUnitId]="organizationUnitId" (usersSelected)="onUsersSelected($event)">
+    </app-associate-user-organization-unit-list>
+</form>

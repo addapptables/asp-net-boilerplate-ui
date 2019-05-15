@@ -1,0 +1,92 @@
+<form autocomplete="off" id="contact-form" [formGroup]="formGroup" class="form-full-width" (submit)="submit()">
+  <div class="row">
+
+    <!-- names Field -->
+    <div class="col-12 col-md-6">
+      <mat-form-field>
+        <input matInput [placeholder]="'contact.names' | translate" formControlName="names" required>
+        <mat-error *ngIf="formGroup.controls.names.invalid">
+          <span *ngIf="formGroup.controls.names.errors.required">{{'general.required' | translate}}</span>
+          <span *ngIf="formGroup.controls.names.errors.maxlength">{{'general.maxlength' | translate: { x: defaultSize } }}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- names Field -->
+
+    <!-- identificationType Field -->
+    <div class="col-12 col-md-6">
+      <app-identification-type-select [form]="formGroup"></app-identification-type-select>
+    </div>
+    <!-- identificationType Field -->
+
+    <!-- identification Field -->
+    <div class="col-12 col-md-6">
+      <mat-form-field>
+        <input matInput [placeholder]="'contact.identification' | translate" formControlName="identification">
+        <mat-error *ngIf="formGroup.controls.identification.invalid">
+          <span *ngIf="formGroup.controls.identification.errors.maxlength">{{'general.maxlength' | translate: { x: defaultSize } }}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- identification Field -->
+
+    <!-- address Field -->
+    <div class="col-12 col-md-6">
+      <mat-form-field>
+        <input matInput [placeholder]="'contact.address' | translate" formControlName="address">
+        <mat-error *ngIf="formGroup.controls.address.invalid">
+          <span *ngIf="formGroup.controls.address.errors.maxlength">{{'general.maxlength' | translate: { x: largeSize } }}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- address Field -->
+
+    <!-- email Field -->
+    <div class="col-12 col-md-6">
+      <mat-form-field>
+        <input matInput [placeholder]="'contact.email' | translate" formControlName="email">
+        <mat-error *ngIf="formGroup.controls.email.invalid">
+          <span *ngIf="formGroup.controls.email.errors.maxlength">{{'general.maxlength' | translate: { x: emailSize } }}</span>
+          <span *ngIf="formGroup.controls.email.errors.email">{{'general.isEmail' | translate }}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- email Field -->
+
+    <!-- phone Field -->
+    <div class="col-12 col-md-6">
+      <mat-form-field>
+        <input matInput [placeholder]="'contact.phone' | translate" formControlName="phone">
+        <mat-error *ngIf="formGroup.controls.phone.invalid">
+          <span *ngIf="formGroup.controls.phone.errors.maxlength">{{'general.defaultSize' | translate: { x: emailSize } }}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- phone Field -->
+
+
+    <!-- cellPhone Field -->
+    <div class="col-12 col-md-6">
+      <mat-form-field>
+        <input matInput [placeholder]="'contact.cellPhone' | translate" formControlName="cellPhone">
+        <mat-error *ngIf="formGroup.controls.cellPhone.invalid">
+          <span *ngIf="formGroup.controls.cellPhone.errors.maxlength">{{'general.defaultSize' | translate: { x: emailSize } }}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- cellPhone Field -->
+
+    <!-- isClient Field -->
+    <div class="col-12 col-md-6">
+      <mat-checkbox formControlName="isClient">{{'contact.isClient' | translate}}</mat-checkbox>
+    </div>
+    <!-- isClient Field -->
+
+    <!-- isSupplier Field -->
+    <div class="col-12 col-md-6">
+      <mat-checkbox formControlName="isSupplier">{{'contact.isSupplier' | translate}}</mat-checkbox>
+    </div>
+    <!-- isSupplier Field -->
+
+  </div>
+</form>

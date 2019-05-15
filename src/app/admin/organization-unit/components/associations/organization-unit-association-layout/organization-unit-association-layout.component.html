@@ -1,0 +1,33 @@
+<addapptable-card>
+  <addapptable-card-header>
+    <addapptable-card-header-linear>
+      <addapptable-card-title>
+        <i class="fas fa-sitemap"></i>
+        <h4>{{'organizationUnit.associations' | translate}}</h4>
+      </addapptable-card-title>
+    </addapptable-card-header-linear>
+  </addapptable-card-header>
+  <mat-divider></mat-divider>
+  <addapptable-card-body>
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="organization-unit-tab-icon">people</mat-icon>
+          {{'user.title' | translate}}
+        </ng-template>
+        <div class="tab-content">
+          <app-user-organization-unit-list [setOrganizationUnitId]="organizationUnitId"></app-user-organization-unit-list>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="organization-unit-tab-icon">supervised_user_circle</mat-icon>
+          {{'role.title' | translate}}
+        </ng-template>
+        <div class="tab-content">
+          <app-role-organization-unit-list [setOrganizationUnitId]="organizationUnitId"></app-role-organization-unit-list>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </addapptable-card-body>
+</addapptable-card>

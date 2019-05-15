@@ -1,0 +1,40 @@
+<div class="table-container">
+    <div class="table-loading" *ngIf="dataSource.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="table-responsive-vertical" addapptablesPerfectScrollbar>
+        <mat-table [dataSource]="dataSource" class="table">
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+              {{'general.actions' | translate}}
+            </mat-header-cell>
+            <mat-cell class="text-light-gray" *matCellDef="let role">
+              <button mat-icon-button (click)="editRole(role)" *ngIf="'Pages.Administration.Roles.Edit' | isGranted">
+                <mat-icon suffix>edit</mat-icon>
+              </button>
+              <button *ngIf="('Pages.Administration.Roles.Delete' | isGranted) && !role.isStatic" mat-icon-button (click)="deleteRole(role)">
+                <mat-icon suffix>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+            <!-- name Column -->
+            <ng-container matColumnDef="normalizedName">
+                <mat-header-cell *matHeaderCellDef>{{'role.name' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let role" title="{{'role.name' | translate}}"> {{role.normalizedName}} </mat-cell>
+            </ng-container>
+
+            <!-- description Column -->
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef>{{'role.description' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let role" title="{{'role.description' | translate}}"> {{role.description}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="dataSource.displayedColumns | isGrantedActionColumn: ['Pages.Administration.Roles.Edit', 'Pages.Administration.Roles.Delete']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: dataSource.displayedColumns | isGrantedActionColumn: ['Pages.Administration.Roles.Edit', 'Pages.Administration.Roles.Delete'];"></mat-row>
+        </mat-table>
+        <mat-paginator [length]="dataSource.total$ | async" [pageSize]="10" hidePageSize="true"></mat-paginator>
+    </div>
+</div>

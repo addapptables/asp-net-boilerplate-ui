@@ -1,0 +1,9 @@
+<div [formGroup]="form" class="form-full-width">
+  <mat-form-field >
+    <mat-select [placeholder]="'accountancy.identificationType.title' | translate" formControlName="identificationType">
+      <mat-option>--</mat-option>
+      <mat-option [value]="1">NIT (Número de identificación tributaria)</mat-option>
+      <mat-option [value]="2">CC (Cédula de ciudadanía)</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

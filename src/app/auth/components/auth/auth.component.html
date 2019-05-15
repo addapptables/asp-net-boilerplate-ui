@@ -1,0 +1,25 @@
+<app-progress-bar class="auth-progrees-bar"></app-progress-bar>
+<div class="auth" addapptablesPerfectScrollbar>
+    <div class="auth-content">
+        <addapptable-card>
+            <addapptable-card-header>
+                <addapptable-card-header-oval>
+                    <addapptable-card-title>
+                        <mat-icon matSuffix>email</mat-icon>
+                        <span>Addapptables</span>
+                        <app-translate></app-translate>
+                    </addapptable-card-title>
+                </addapptable-card-header-oval>
+            </addapptable-card-header>
+            <addapptable-card-body>
+                <div class="auth-tenant">
+                    <a *ngIf="showTenantChange()" (click)="openModalTenant()">{{'tenant.change' | translate}}</a>
+                    <p class="login-tenat-name-align" *ngIf="tenant$ | async as tenant">
+                        ({{tenant.name}})
+                    </p>
+                </div>
+                <app-login-form></app-login-form>
+            </addapptable-card-body>
+        </addapptable-card>
+    </div>
+</div>

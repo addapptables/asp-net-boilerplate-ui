@@ -1,0 +1,7 @@
+{
+    "remoteServiceBaseUrl": "http://localhost:21021",
+    "appBaseUrl": "http://localhost:4200",
+    "tenancyNamePlaceHolderInUrl": "{TENANCY_NAME}",
+    "alertSize": "500px",
+    "enabledTenancy": true
+}

@@ -1,0 +1,19 @@
+<addapptable-card>
+  <addapptable-card-header>
+    <addapptable-card-header-oval>
+      <addapptable-card-title>
+        <mat-icon suffix>people</mat-icon>
+        <h4>{{'user.title' | translate}}</h4>
+      </addapptable-card-title>
+    </addapptable-card-header-oval>
+    <addapptable-card-header-subtitle *ngIf="'Pages.Administration.Users.Create' | isGranted">
+      <button type="button" color="accent" mat-raised-button (click)="createUser()">
+        <mat-icon suffix>person_add</mat-icon>
+        {{'user.create' | translate}}
+      </button>
+    </addapptable-card-header-subtitle>
+  </addapptable-card-header>
+  <addapptable-card-body>
+    <app-user-list></app-user-list>
+  </addapptable-card-body>
+</addapptable-card>

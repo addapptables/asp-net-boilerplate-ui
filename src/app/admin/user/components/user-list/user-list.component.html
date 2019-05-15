@@ -1,0 +1,93 @@
+<div class="table-container">
+    <div class="table-loading" *ngIf="dataSource.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+    <app-user-list-search (search)="search($event)"></app-user-list-search>
+    <div class="table-responsive-vertical" addapptablesPerfectScrollbar>
+        <mat-table [dataSource]="dataSource" class="table">
+
+            <!-- Actions Column -->
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef>
+                {{'general.actions' | translate}}
+              </mat-header-cell>
+              <mat-cell class="text-light-gray" *matCellDef="let user">
+                <button mat-icon-button (click)="editUser(user)" *ngIf="'Pages.Administration.Users.Edit' | isGranted">
+                  <mat-icon suffix>edit</mat-icon>
+                </button>
+                <button *ngIf="'Pages.Administration.Users.Delete' | isGranted" mat-icon-button (click)="deleteUser(user)">
+                  <mat-icon suffix>delete</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="extendColumn">
+              <mat-header-cell *matHeaderCellDef>
+                {{'general.actions' | translate}}
+              </mat-header-cell>
+              <mat-cell class="text-light-gray" *matCellDef="let user">
+                <ng-content *ngTemplateOutlet="templateRef; context:{user: user}" [ngIf]="templateRef"></ng-content>
+              </mat-cell>
+            </ng-container>
+
+            <!-- userName Column -->
+            <ng-container matColumnDef="userName">
+                <mat-header-cell *matHeaderCellDef>{{'user.userName' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let user" title="{{'user.userName' | translate}}"> {{user.userName}} </mat-cell>
+            </ng-container>
+            <!-- userName Column -->
+
+            <!-- fullName Column -->
+            <ng-container matColumnDef="fullName">
+                <mat-header-cell *matHeaderCellDef>{{'user.fullName' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let user" title="{{'user.fullName' | translate}}"> {{user.fullName}} </mat-cell>
+            </ng-container>
+            <!-- fullName Column -->
+
+            <!-- emailAddress Column -->
+            <ng-container matColumnDef="emailAddress">
+                <mat-header-cell *matHeaderCellDef>{{'user.emailAddress' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let user" title="{{'user.emailAddress' | translate}}"> {{user.emailAddress}} </mat-cell>
+            </ng-container>
+            <!-- emailAddress Column -->
+
+            <!-- roleNames Column -->
+            <ng-container matColumnDef="roleNames">
+                <mat-header-cell *matHeaderCellDef>{{'user.roleNames' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let user" title="{{'user.roleNames' | translate}}">
+                  {{getRolesNames(user.roleNames)}}
+                </mat-cell>
+            </ng-container>
+            <!-- roleNames Column -->
+
+            <!-- isActive Column -->
+            <ng-container matColumnDef="isActive">
+                <mat-header-cell *matHeaderCellDef>{{'user.isActive' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let user" title="{{'user.isActive' | translate}}">
+                  <ng-container [ngSwitch]="user.isActive">
+                    <span *ngSwitchCase="true">
+                      {{'general.yes' | translate}}
+                    </span>
+                    <span *ngSwitchCase="false">
+                      {{'general.no' | translate}}
+                    </span>
+                  </ng-container>
+                </mat-cell>
+            </ng-container>
+            <!-- isActive Column -->
+
+            <!-- lastLoginTime Column -->
+            <ng-container matColumnDef="lastLoginTime">
+                <mat-header-cell *matHeaderCellDef>{{'user.lastLoginTime' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let user" title="{{'user.lastLoginTime' | translate}}">
+                  <span *ngIf="user.lastLoginTime">{{user.lastLoginTime | momentFormat:'DD MMMM YYYY hh:mm a'}}</span>
+                </mat-cell>
+            </ng-container>
+            <!-- lastLoginTime Column -->
+
+            <mat-header-row *matHeaderRowDef="displayedColumns | isGrantedActionColumn: ['Pages.Administration.Users.Edit', 'Pages.Administration.Users.Delete']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns | isGrantedActionColumn: ['Pages.Administration.Users.Edit', 'Pages.Administration.Users.Delete'];"></mat-row>
+        </mat-table>
+        <mat-paginator [length]="dataSource.total$ | async" [pageSize]="size" hidePageSize="true"></mat-paginator>
+    </div>
+</div>

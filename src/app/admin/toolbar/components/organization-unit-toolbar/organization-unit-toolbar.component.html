@@ -1,0 +1,12 @@
+<ng-container *ngIf="selectOrganizationUnit$ | async; let selectOrganizationUnit">
+  <button mat-button [matMenuTriggerFor]="organizationUnitMenu">
+    <mat-icon matSuffix>business</mat-icon>
+    <span class="translate-text-uppercase">{{selectOrganizationUnit.displayName}}</span>
+  </button>
+</ng-container>
+
+<mat-menu #organizationUnitMenu="matMenu" [overlapTrigger]="false">
+  <button type="button" mat-menu-item *ngFor="let organizationUnit of organizationUnits$ | async" (click)="changeOrganizationUnit(organizationUnit)">
+    <span>{{ organizationUnit.displayName }}</span>
+  </button>
+</mat-menu>

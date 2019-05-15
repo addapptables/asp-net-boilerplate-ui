@@ -1,0 +1,32 @@
+<form [formGroup]="form" class="form-full-width" autocomplete="off">
+  <mat-form-field appearance="outline">
+    <mat-label>{{'auth.name' | translate}}</mat-label>
+    <input matInput type="text" formControlName="name">
+    <mat-icon matSuffix>people</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>{{'auth.email' | translate}}</mat-label>
+    <input matInput type="email" formControlName="email">
+    <mat-icon matSuffix>email</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>{{'auth.password' | translate}}</mat-label>
+    <input matInput type="password" formControlName="password">
+    <mat-icon matSuffix>lock</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>{{'auth.repeatPassword' | translate}}</mat-label>
+    <input matInput type="password" formControlName="passwordConfirm">
+    <mat-icon matSuffix>lock</mat-icon>
+  </mat-form-field>
+  <mat-checkbox formControlName="termAndConditions">I read and accept terms and conditions</mat-checkbox>
+  <button mat-raised-button color="primary" [disabled]="!form.valid" class="register-button">
+    {{ "auth.register" | translate }}
+  </button>
+  <div class="register-already-have-account">
+    <span>
+      Already have an account?
+    </span>
+    <a [routerLink]="['/']">Login</a>
+  </div>
+</form>

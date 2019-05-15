@@ -1,0 +1,17 @@
+<addapptable-modal>
+  <addapptable-modal-header>
+    <h3 class="text-accent">{{'user.create' | translate}}</h3>
+    <button mat-icon-button (click)="close()">
+      <mat-icon suffix>close</mat-icon>
+    </button>
+  </addapptable-modal-header>
+  <addapptable-modal-body>
+    <app-user-form #userForm [userDto]="userDto" (save)="close()"></app-user-form>
+  </addapptable-modal-body>
+  <addapptable-modal-footer>
+    <button type="submit" form="user-form" mat-raised-button color="accent" [disabled]="userForm.loadingAction$ | async">
+      {{'general.save' | translate}}
+    </button>
+    <button type="button" mat-raised-button (click)="close()">{{'general.close' | translate}}</button>
+  </addapptable-modal-footer>
+</addapptable-modal>

@@ -1,0 +1,118 @@
+<div class="table-container">
+    <div class="table-loading" *ngIf="dataSource.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+    <app-tenant-list-search (search)="search($event)"></app-tenant-list-search>
+    <div class="table-responsive-vertical" addapptablesPerfectScrollbar>
+        <mat-table [dataSource]="dataSource" class="table">
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+              {{'general.actions' | translate}}
+            </mat-header-cell>
+            <mat-cell class="text-light-gray" *matCellDef="let tenant">
+              <button mat-icon-button (click)="editTenant(tenant)" *ngIf="'Pages.Tenants.Edit' | isGranted">
+                <mat-icon suffix>edit</mat-icon>
+              </button>
+              <button *ngIf="'Pages.Tenants.Delete' | isGranted" mat-icon-button (click)="deleteTenant(tenant)">
+                <mat-icon suffix>delete</mat-icon>
+              </button>
+              <button *ngIf="'Pages.Tenants.Impersonation' | isGranted" mat-icon-button (click)="openModalImpersonation(tenant.id)"
+                [matTooltip]="'tenant.impersonation' | translate" matTooltipPosition="above">
+                <mat-icon suffix>supervisor_account</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+            <!-- name Column -->
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>{{'tenant.name' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let tenant" title="{{'tenant.name' | translate}}"> {{tenant.name}} </mat-cell>
+            </ng-container>
+            <!-- name Column -->
+
+            <!-- tenancyName Column -->
+            <ng-container matColumnDef="tenancyName">
+                <mat-header-cell *matHeaderCellDef>{{'tenant.tenancyName' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let tenant" title="{{'tenant.tenancyName' | translate}}"> {{tenant.tenancyName}} </mat-cell>
+            </ng-container>
+            <!-- tenancyName Column -->
+
+            <!-- isActive Column -->
+            <ng-container matColumnDef="isActive">
+                <mat-header-cell *matHeaderCellDef>{{'tenant.isActive' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let tenant" title="{{'tenant.isActive' | translate}}">
+                  <ng-container [ngSwitch]="tenant.isActive">
+                    <span *ngSwitchCase="true">
+                      {{'general.yes' | translate}}
+                    </span>
+                    <span *ngSwitchCase="false">
+                      {{'general.no' | translate}}
+                    </span>
+                  </ng-container>
+                </mat-cell>
+            </ng-container>
+            <!-- isActive Column -->
+
+            <!-- edition Column -->
+            <ng-container matColumnDef="edition">
+                <mat-header-cell *matHeaderCellDef>{{'tenant.edition' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let tenant" title="{{'tenant.edition' | translate}}"> {{tenant.edition?.displayName}} </mat-cell>
+            </ng-container>
+            <!-- edition Column -->
+
+            <!-- subscriptionEndDate Column -->
+            <ng-container matColumnDef="subscriptionEndDate">
+                <mat-header-cell *matHeaderCellDef>{{'tenant.subscriptionEndDate' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let tenant" title="{{'tenant.subscriptionEndDate' | translate}}">
+                  {{tenant.subscriptionEndDate | momentFormat:'DD MMMM YYYY'}}
+                </mat-cell>
+            </ng-container>
+            <!-- subscriptionEndDate Column -->
+
+            <!-- isInTrialPeriod Column -->
+            <ng-container matColumnDef="isInTrialPeriod">
+                <mat-header-cell *matHeaderCellDef>{{'tenant.isInTrialPeriod' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let tenant" title="{{'tenant.isInTrialPeriod' | translate}}">
+                  <ng-container [ngSwitch]="tenant.isInTrialPeriod">
+                    <span *ngSwitchCase="true">
+                      {{'general.yes' | translate}}
+                    </span>
+                    <span *ngSwitchCase="false">
+                      {{'general.no' | translate}}
+                    </span>
+                  </ng-container>
+                </mat-cell>
+            </ng-container>
+            <!-- isInTrialPeriod Column -->
+
+            <!-- isSubscriptionExpired Column -->
+            <ng-container matColumnDef="isSubscriptionExpired">
+                <mat-header-cell *matHeaderCellDef>{{'tenant.isSubscriptionExpired' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let tenant" title="{{'tenant.isSubscriptionExpired' | translate}}">
+                  <ng-container [ngSwitch]="tenant.isSubscriptionExpired">
+                    <span *ngSwitchCase="true">
+                      {{'general.yes' | translate}}
+                    </span>
+                    <span *ngSwitchCase="false">
+                      {{'general.no' | translate}}
+                    </span>
+                  </ng-container>
+                </mat-cell>
+            </ng-container>
+            <!-- isSubscriptionExpired Column -->
+
+            <!-- nextPrice Column -->
+            <ng-container matColumnDef="nextPrice">
+                <mat-header-cell *matHeaderCellDef>{{'tenant.nextPrice' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let tenant" title="{{'tenant.nextPrice' | translate}}"> {{tenant.nextPrice | number: '1.'}} </mat-cell>
+            </ng-container>
+            <!-- nextPrice Column -->
+
+            <mat-header-row *matHeaderRowDef="dataSource.displayedColumns | isGrantedActionColumn: ['Pages.Tenants.Edit', 'Pages.Tenants.Delete', 'Pages.Tenants.Impersonation']"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: dataSource.displayedColumns | isGrantedActionColumn: ['Pages.Tenants.Edit', 'Pages.Tenants.Delete', 'Pages.Tenants.Impersonation'];"></mat-row>
+        </mat-table>
+        <mat-paginator [length]="dataSource.total$ | async" [pageSize]="10" hidePageSize="true"></mat-paginator>
+    </div>
+</div>
