@@ -1,6 +1,6 @@
 {
-  "name": "startup-template",
-  "version": "0.0.0",
+  "name": "addapptables-boilerplate",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --disable-host-check",
@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "private": false,
+  "license": "MIT",
   "dependencies": {
     "@addapptables/alert": "^1.0.1",
     "@addapptables/card": "^1.0.0",
